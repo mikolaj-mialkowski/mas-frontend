@@ -4,7 +4,7 @@ import React, { useState } from "react";
 const NewSpeciesForm = (props) => {
   const [userInput, setUserInput] = useState({
     enteredLatinName: "",
-    enteredlifeCycle: ""
+    enteredlifeCycle: "",
   });
 
   const latinNameChangeHandler = (event) => {
@@ -24,21 +24,35 @@ const NewSpeciesForm = (props) => {
 
     let newSpecies = {
       latinName: userInput.enteredLatinName,
-      lifeCycle: userInput.enteredlifeCycle
+      lifeCycle: userInput.enteredlifeCycle,
+      id: Math.random().toString(),
     };
 
-    props.onAddNewSpecies(newSpecies);
-    clearFormFields();
+    if (isValidSpecies(newSpecies)) {
+      props.onAddNewSpecies(newSpecies);
+      clearFormFields();
+    }
+  };
+
+  const isValidSpecies = (species) => {
+    if (
+      species.latinName === "" ||
+      species.lifeCycle === "" ||
+      species.id === ""
+    )
+      return false;
+
+    return true;
   };
 
   const hideFormHandler = (event) => {
-    event.preventDefault(); 
+    event.preventDefault();
     props.onHideForm(true);
     clearFormFields();
   };
 
   const clearFormFields = () =>
-    setUserInput({ enteredLatinName: "", enteredlifeCycle: ""});
+    setUserInput({ enteredLatinName: "", enteredlifeCycle: "" });
 
   return (
     <form onSubmit={submitHandler}>
@@ -51,11 +65,34 @@ const NewSpeciesForm = (props) => {
             value={userInput.enteredLatinName}
           />
         </div>
-
+        <div>
+          <label>
+            <input
+              type="radio"
+              value="annual species"
+              onChange={lifeCycleChangeHandler}
+              checked={userInput.enteredlifeCycle === "annual species"}
+            />
+            Annual species
+          </label>
+        </div>
+        <div>
+          <label>
+            <input
+              type="radio"
+              value="perennial species"
+              onChange={lifeCycleChangeHandler}
+              checked={userInput.enteredlifeCycle === "perennial species"}
+            />
+            Perennial species
+          </label>
+        </div>
       </div>
       <div className="new-species-form__actions">
-      <button onClick={hideFormHandler} >Canclel</button>
+      <div className="species-form-button">
+        <button onClick={hideFormHandler}>Canclel</button>
         <button type="submit">Add new species</button>
+      </div>
       </div>
     </form>
   );

@@ -24,3 +24,46 @@
   .new-species-form__actions {
     text-align: right;
   }
+
+  .species-form-button button {
+    font: inherit;
+    cursor: pointer;
+    padding: 1rem 2rem;
+    border: 1px solid #ffffff;
+    background-color: rgba(31,31,31);
+    color: white;
+    border-radius: 12px;
+    margin-right: 1rem;
+    margin-left: 1rem;
+  }
+
+  .species-form-radio radio {
+    font: inherit;
+    cursor: pointer;
+    padding: 1rem 2rem;
+    border: 1px solid #ffffff;
+    background-color: rgba(31,31,31);
+    color: white;
+    border-radius: 12px;
+    margin-right: 1rem;
+    margin-left: 1rem;
+  }
+
+  
+  .species-form-button button:hover,
+  .species-form-button button:active {
+    background-color: rgba(31,31,31,70);
+    border-color: #0a8836;
+    color: #0a8836;
+  }
+  
+  .species-form-button button.alternative {
+    color: #012519;
+    border-color: transparent;
+    background-color: transparent;
+  }
+  
+  .species-form-button button.alternative:hover,
+  .species-form-button button.alternative:active {
+    background-color: #defad7;
+  }

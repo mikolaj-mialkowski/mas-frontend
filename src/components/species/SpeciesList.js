@@ -23,10 +23,20 @@ const SpeciesList = (props) => {
     },
   ];
 
+  const [speciesList, setSpeciesList] = useState(DUMMY_SPECIES);
+
   const [openForm, setOpenForm] = useState(false);
 
   const clearSelectedCategoryHandler = () => {
     props.onClearCategory("Experienced Gardener");
+  };
+
+  const addNewSpeciesHandler = (newSpecies) => {
+      console.log(newSpecies)
+    setSpeciesList((previousState) => {
+      return [newSpecies, ...previousState];
+    });
+    closeFormHandler();
   };
 
   const showFormHandler = () => {
@@ -35,11 +45,6 @@ const SpeciesList = (props) => {
 
   const closeFormHandler = () => {
     setOpenForm(false);
-  };
-
-  const saveNewSpeciesHandler = (newSpecies) => {
-    console.log(newSpecies);
-    closeFormHandler();
   };
 
   const buildHead = () => {
@@ -54,7 +59,7 @@ const SpeciesList = (props) => {
           <div className="species-list-head">
             <div className="species-list__title">
               <NewSpeciesForm
-                onAddNewSpecies={saveNewSpeciesHandler}
+                onAddNewSpecies={addNewSpeciesHandler}
                 onHideForm={closeFormHandler}
               />
             </div>
@@ -94,7 +99,7 @@ const SpeciesList = (props) => {
       {buildHead()}
       <Card className="species-list__background">
         <ul className="species-list">
-          {DUMMY_SPECIES.map((species) => (
+          {speciesList.map((species) => (
             <Species
               key={species.id}
               id={species.id}
