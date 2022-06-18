@@ -1,0 +1,38 @@
+.experienced-gardeners{
+    list-style: none;
+    padding: 0;
+  }
+
+  .experienced-gardeners__background{
+    padding: 1rem;
+    background-color: rgb(31, 31, 31);
+    margin: 2rem auto;
+    width: 50rem;
+    max-width: 95%;
+  } 
+  
+  .experienced-gardeners__title{
+    color: white;
+    text-align: center;
+  }
+  
+.experienced-gardeners__box{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: flex-end;
+    flex-flow: column-reverse;
+    justify-content: flex-start;
+    flex: 1;
+  }
+
+  .experienced-gardeners-cancel {
+    background-color: rgba(0, 70, 21, 0.8);
+    padding: 1rem;
+    margin: 2rem auto;
+    width: 50rem;
+    max-width: 95%;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 20px 20px rgba(0, 0, 0, 0.3);
+  }

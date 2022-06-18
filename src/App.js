@@ -1,25 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import WorkerCategorySelector from "./components/workers/WorkerCategorySelector";
 
-function App() {
+const App = () => {
+  const DUMMY_WORKERS_CATEGORY = [
+    {
+      id: 1,
+      name: "Novice Gardener",
+    },
+    {
+      id: 2,
+      name: "Experienced Gardener",
+    },
+    {
+      id: 3,
+      name: "Administration Worker",
+    }
+  ];
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <WorkerCategorySelector workersCategoryList={DUMMY_WORKERS_CATEGORY} />
     </div>
   );
-}
+};
 
 export default App;
