@@ -37,7 +37,7 @@ const SpeciesList = (props) => {
     setSpeciesList((previousState) => [
       {
         latinName: data.latinName,
-        lifeCycleL: data.lifeCycle,
+        lifeCycle: data.lifeCycle,
         id: data.id,
         key: data.id,
       },
