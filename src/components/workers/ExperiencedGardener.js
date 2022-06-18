@@ -3,16 +3,16 @@ import Card from "../UI/Card";
 import EmploymentDate from "./EmploymentDate";
 
 const ExperiencedGardener = (props) => {
-  const selectWorkerHandler = (event) => {
+  const selectGardenerHandler = (event) => {
     event.preventDefault();
-    props.onSlectedWorker(props.key);
+    props.onSelectedGardener(props.id)
   };
 
   return (
     <Card className="experienced-gardener">
       <div className="experienced-gardener__box">
         <EmploymentDate date={props.employmentDate} />
-        <button onClick={selectWorkerHandler}>
+        <button onClick={selectGardenerHandler}>
           {props.firstName + "\t" + props.lastName}    
         </button>
         <div className="experienced-gardener-contact-info"> {props.contactInfo}</div>
