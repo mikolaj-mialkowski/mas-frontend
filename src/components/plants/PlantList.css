@@ -1,0 +1,86 @@
+.plant-list{
+    list-style: none;
+    padding: 0;
+  }
+
+  .plant-list__background{
+    padding: 1rem;
+    background-color: rgb(31, 31, 31);
+    margin: 2rem auto;
+    width: 50rem;
+    max-width: 95%;
+  } 
+  
+  .plant-list__title{
+    color: white;
+    text-align: center;
+  }
+  
+.plant-list__box{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: flex-end;
+    flex-flow: column-reverse;
+    justify-content: flex-start;
+    flex: 1;
+  }
+
+  .plant-list-foot {
+    background-color: rgba(0, 70, 21, 0.8);
+    padding: 1rem;
+    margin: 2rem auto;
+    width: 50rem;
+    max-width: 95%;
+    border-radius: 12px;
+    text-align: right;
+    
+    box-shadow: 0 20px 20px rgba(0, 0, 0, 0.3);
+  }
+
+  .plant-list-head {
+    background-color: rgba(0, 70, 21, 0.8);
+    padding: 1rem;
+    margin: 2rem auto;
+    width: 50rem;
+    max-width: 95%;
+    border-radius: 12px;
+    text-align: center;
+    border-radius: 12px;
+    box-shadow: 0 20px 20px rgba(0, 0, 0, 0.3);
+  }
+
+  .plant-list__title{
+    color: white;
+    text-align: center;
+  }
+
+  .plant-list-button button {
+    font: inherit;
+    cursor: pointer;
+    padding: 1rem 2rem;
+    border: 1px solid #ffffff;
+    background-color: rgba(31,31,31);
+    color: white;
+    border-radius: 12px;
+    margin-right: 1rem;
+    margin-left: 1rem;
+  }
+  
+  .plant-list-button button:hover,
+  .plant-list-button button:active {
+    background-color: rgba(31,31,31,70);
+    border-color: #0a8836;
+    color: #0a8836;
+  }
+  
+  .plant-list-button button.alternative {
+    color: #012519;
+    border-color: transparent;
+    background-color: transparent;
+  }
+  
+  .plant-list-button button.alternative:hover,
+  .plant-list-button button.alternative:active {
+    background-color: #defad7;
+  }

@@ -4,6 +4,7 @@ import Card from "../UI/Card";
 import ExperiencedGardeners from "./ExperiencedGardeners";
 import React, { useState } from "react";
 import SpeciesList from "../species/SpeciesList";
+import PlantsList from "../plants/PlantList";
 
 const ScenesSelector = (props) => {
     
@@ -22,7 +23,7 @@ const ScenesSelector = (props) => {
   };
 
   const addPlantHandler = () => {
-    setSelectedScene("plant")
+    setSelectedScene("plants")
 };
 
   const buildHead = () => {
@@ -48,6 +49,14 @@ const ScenesSelector = (props) => {
       <SpeciesList
         onClearCategory={selectSpecyficSceneHandler}
       ></SpeciesList>
+    );
+  }
+
+  if (selectedScene === "plants") {
+    return (
+      <PlantsList
+        onClearCategory={selectSpecyficSceneHandler}
+      ></PlantsList>
     );
   }
 

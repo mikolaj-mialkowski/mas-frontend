@@ -1,0 +1,86 @@
+.plant-salary {
+    font-size: 1rem;
+    font-weight: bold;
+    color: white;
+    background-color: #01802d85;
+    border: 1px solid white;
+    padding: 0.5rem;
+    border-radius: 12px;
+    font-size: 1.25rem;
+    margin-left: 25rem;
+    margin-right: 1;
+
+    padding: 0.5rem 1.5rem;
+  }
+
+  .plant-contact-info {
+    font-size: 1rem;
+    color: white;
+    background-color: rgba(31,31,31);
+    border: 1px solid white;
+    padding: 0.5rem;
+    border-radius: 12px;
+    font-size: 1rem;
+    padding: 0.75rem 1.5rem;
+  }
+
+  .plant {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem;
+    margin: 1.2rem 0;
+    background-color: #4b4b4b;
+  }
+
+  .plant__box{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: flex-end;
+    flex-flow: column-reverse;
+    justify-content: flex-start;
+    flex: 1;
+  }
+  
+  .plant-def{
+    font: inherit;
+    padding: 1rem 2rem;
+    border: 1px solid #ffffff;
+    background-color: rgba(31,31,31);
+    color: white;
+    border-radius: 12px;
+    margin-right: 1rem;
+  }
+
+  .plant button:hover,
+  .plantbutton:active {
+    background-color: rgba(31,31,31,70);
+    border-color: #0a8836;
+    color: #0a8836;
+  }
+
+  .plant__box h2 {
+    font-size: 1.25rem;
+  }
+
+  .plant__box{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: flex-end;
+    flex-flow: column-reverse;
+    justify-content: flex-start;
+    flex: 1;
+  }
+
+  @media (min-width: 900px) {
+    .plant__box {
+      flex-direction: row;
+      align-items: center;
+      justify-content: flex-start;
+      flex: 1;
+    }
+}
+  
+  
