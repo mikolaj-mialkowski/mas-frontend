@@ -65,7 +65,7 @@ const NewSpeciesForm = (props) => {
             value={userInput.enteredLatinName}
           />
         </div>
-        <div>
+        <div className="species-form-radio">
           <label>
             <input
               type="radio"
@@ -76,7 +76,7 @@ const NewSpeciesForm = (props) => {
             Annual species
           </label>
         </div>
-        <div>
+        <div className="species-form-radio">
           <label>
             <input
               type="radio"
@@ -89,10 +89,10 @@ const NewSpeciesForm = (props) => {
         </div>
       </div>
       <div className="new-species-form__actions">
-      <div className="species-form-button">
-        <button onClick={hideFormHandler}>Canclel</button>
-        <button type="submit">Add new species</button>
-      </div>
+        <div className="species-form-button">
+          <button onClick={hideFormHandler}>Canclel</button>
+          <button type="submit">Add new species</button>
+        </div>
       </div>
     </form>
   );

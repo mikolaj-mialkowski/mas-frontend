@@ -25,6 +25,18 @@
     text-align: right;
   }
 
+  .new-species-form__radio {
+    font: inherit;
+    cursor: pointer;
+    padding: 1rem 2rem;
+    border: 1px solid #ffffff;
+    background-color: rgba(31,31,31);
+    color: white;
+    border-radius: 12px;
+    margin-right: 1rem;
+    margin-left: 1rem;
+  }
+
   .species-form-button button {
     font: inherit;
     cursor: pointer;
@@ -37,16 +49,14 @@
     margin-left: 1rem;
   }
 
-  .species-form-radio radio {
+  .species-form-radio{
     font: inherit;
     cursor: pointer;
-    padding: 1rem 2rem;
-    border: 1px solid #ffffff;
-    background-color: rgba(31,31,31);
     color: white;
+    font-size: 1.2rem;
     border-radius: 12px;
-    margin-right: 1rem;
-    margin-left: 1rem;
+    margin-right: 0.5rem;
+    margin-left: 0.5rem;
   }
 
   
