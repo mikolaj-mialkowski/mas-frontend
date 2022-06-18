@@ -1,7 +1,8 @@
 import Card from "../UI/Card";
 import React, { useState } from "react";
 import Species from "./Species";
-import "./SpeciesList.css"
+import "./SpeciesList.css";
+import NewSpeciesForm from "./NewSpeciesForm";
 
 const SpeciesList = (props) => {
   const DUMMY_SPECIES = [
@@ -22,18 +23,57 @@ const SpeciesList = (props) => {
     },
   ];
 
+  const [openForm, setOpenForm] = useState(false);
+
+  const clearSelectedCategoryHandler = () => {
+    props.onClearCategory("Experienced Gardener");
+  };
+
+  const showFormHandler = () => {
+    setOpenForm(true);
+  };
+
+  const closeFormHandler = () => {
+    setOpenForm(false);
+  };
+
+  const saveNewSpeciesHandler = (newSpecies) => {
+    console.log(newSpecies);
+  };
+
   const buildHead = () => {
+    if (openForm) {
+      return (
+        <div>
+          <div className="species-list-head">
+            <div className="species-list__title">
+              <h2>Manage species</h2>
+            </div>
+          </div>
+          <div className="species-list__title">
+            <NewSpeciesForm
+              onAddNewSpecies={saveNewSpeciesHandler}
+              onHideForm={closeFormHandler}
+            />
+          </div>
+        </div>
+      );
+    }
+
     return (
-      <div className="species-list-head">
-        <div className="species-list__title">
-          <h2>Manage species</h2>
+      <div>
+        <div className="species-list-head">
+          <div className="species-list__title">
+            <h2>Manage species</h2>
+          </div>
+        </div>
+        <div className="species-list-head">
+          <div className="species-list-button">
+            <button onClick={showFormHandler}>Add new species</button>
+          </div>
         </div>
       </div>
     );
-  };
-
-  const clearSelectedCategoryHandler = () => {
-    props.onClearCategory();
   };
 
   const buildFoot = () => {

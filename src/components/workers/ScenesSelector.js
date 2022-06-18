@@ -1,28 +1,28 @@
 import WorkerCategory from "./WorkerCategory";
-import "./WorkerCategorySelector.css";
+import "./ScenesSelector.css";
 import Card from "../UI/Card";
 import ExperiencedGardeners from "./ExperiencedGardeners";
 import React, { useState } from "react";
 import SpeciesList from "../species/SpeciesList";
 
-const WorkerCategorySelector = (props) => {
-  const [selectedCategory, setSelectedCategory] = useState("main");
+const ScenesSelector = (props) => {
+    
+  const [selectedScene, setSelectedScene] = useState("main");
 
-  const selectCategoryHandler = (name) => {
-    console.log(name);
-    setSelectedCategory(name);
+  const selectSpecyficSceneHandler = (name) => {
+    setSelectedScene(name);
   };
 
-  const clearSelectedCategoryHandler = () => {
-    setSelectedCategory("main");
+  const showMainSceneHandler = () => {
+    setSelectedScene("main");
   };
 
-  const addSpeciesHandler = () => {
-    setSelectedCategory("species");
+  const showManageSpeciesHandler = () => {
+    setSelectedScene("species");
   };
 
   const addPlantHandler = () => {
-    setSelectedCategory("plant")
+    setSelectedScene("plant")
 };
 
   const buildHead = () => {
@@ -35,18 +35,18 @@ const WorkerCategorySelector = (props) => {
     );
   };
 
-  if (selectedCategory === "Experienced Gardener") {
+  if (selectedScene === "Experienced Gardener") {
     return (
       <ExperiencedGardeners
-        onClearCategory={clearSelectedCategoryHandler} onManageSpecies={addSpeciesHandler} onManagePlant={addPlantHandler}
+        onClearCategory={showMainSceneHandler} onManageSpecies={showManageSpeciesHandler} onManagePlant={addPlantHandler}
       ></ExperiencedGardeners>
     );
   }
 
-  if (selectedCategory === "species") {
+  if (selectedScene === "species") {
     return (
       <SpeciesList
-        onClearCategory={clearSelectedCategoryHandler}
+        onClearCategory={selectSpecyficSceneHandler}
       ></SpeciesList>
     );
   }
@@ -58,7 +58,7 @@ const WorkerCategorySelector = (props) => {
         <ul className="worker-category-selector">
           {props.workersCategoryList.map((workerCategory) => (
             <WorkerCategory
-              onSlectedCategory={selectCategoryHandler}
+              onSlectedCategory={selectSpecyficSceneHandler}
               key={workerCategory.id}
               name={workerCategory.name}
             />
@@ -69,4 +69,4 @@ const WorkerCategorySelector = (props) => {
   );
 };
 
-export default WorkerCategorySelector;
+export default ScenesSelector;

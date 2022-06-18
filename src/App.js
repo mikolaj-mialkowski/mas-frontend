@@ -1,5 +1,5 @@
 import "./App.css";
-import WorkerCategorySelector from "./components/workers/WorkerCategorySelector";
+import ScenesSelector from "./components/workers/ScenesSelector";
 
 const App = () => {
   const DUMMY_WORKERS_CATEGORY = [
@@ -19,7 +19,7 @@ const App = () => {
 
   return (
     <div className="App">
-      <WorkerCategorySelector workersCategoryList={DUMMY_WORKERS_CATEGORY} />
+      <ScenesSelector workersCategoryList={DUMMY_WORKERS_CATEGORY} />
     </div>
   );
 };
