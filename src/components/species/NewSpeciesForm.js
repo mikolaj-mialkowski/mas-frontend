@@ -25,7 +25,6 @@ const NewSpeciesForm = (props) => {
     let newSpecies = {
       latinName: userInput.enteredLatinName,
       lifeCycle: userInput.enteredlifeCycle,
-      id: Math.random().toString(),
     };
 
     if (isValidSpecies(newSpecies)) {
@@ -35,13 +34,7 @@ const NewSpeciesForm = (props) => {
   };
 
   const isValidSpecies = (species) => {
-    if (
-      species.latinName === "" ||
-      species.lifeCycle === "" ||
-      species.id === ""
-    )
-      return false;
-
+    if (species.latinName === "" || species.lifeCycle === "") return false;
     return true;
   };
 
@@ -69,9 +62,9 @@ const NewSpeciesForm = (props) => {
           <label>
             <input
               type="radio"
-              value="annual species"
+              value="ONE_YEAR"
               onChange={lifeCycleChangeHandler}
-              checked={userInput.enteredlifeCycle === "annual species"}
+              checked={userInput.enteredlifeCycle === "ONE_YEAR"}
             />
             Annual species
           </label>
@@ -80,9 +73,9 @@ const NewSpeciesForm = (props) => {
           <label>
             <input
               type="radio"
-              value="perennial species"
+              value="MULTI_YEARS"
               onChange={lifeCycleChangeHandler}
-              checked={userInput.enteredlifeCycle === "perennial species"}
+              checked={userInput.enteredlifeCycle === "MULTI_YEARS"}
             />
             Perennial species
           </label>

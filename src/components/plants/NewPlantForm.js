@@ -3,13 +3,13 @@ import React, { useState } from "react";
 
 const NewPlantForm = (props) => {
   const [userInput, setUserInput] = useState({
-    enteredLatinName: "",
-    enteredlifeCycle: "",
+    enteredFertilizer: "",
+    enteredspeciesName: ""
   });
 
-  const latinNameChangeHandler = (event) => {
+  const fertilizerChangeHandler = (event) => {
     setUserInput((prevState) => {
-      return { ...prevState, enteredLatinName: event.target.value };
+      return { ...prevState, enteredFertilizer: event.target.value };
     });
   };
 
@@ -61,8 +61,8 @@ const NewPlantForm = (props) => {
           <label>Latin name</label>
           <input
             type="text"
-            onChange={latinNameChangeHandler}
-            value={userInput.enteredLatinName}
+            onChange={fertilizerChangeHandler}
+            value={userInput.enteredFertilizer}
           />
         </div>
         <div className="species-form-radio">

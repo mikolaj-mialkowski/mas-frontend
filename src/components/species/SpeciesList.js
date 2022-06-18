@@ -1,42 +1,56 @@
 import Card from "../UI/Card";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Species from "./Species";
 import "./SpeciesList.css";
 import NewSpeciesForm from "./NewSpeciesForm";
 
 const SpeciesList = (props) => {
-  const DUMMY_SPECIES = [
-    {
-      id: 100,
-      latinName: "Cactus pospolitus",
-      lifeCycle: "ONE_YEAR",
-    },
-    {
-      id: 101,
-      latinName: "Jarzebina polska",
-      lifeCycle: "ONE_YEAR",
-    },
-    {
-      id: 102,
-      latinName: "Random latin name",
-      lifeCycle: "MULTI_YEARS",
-    },
-  ];
+  useEffect(() => {
+    const getSpecies = async () => {
+      const speciesFromBE = await fetchSpecies();
+      setSpeciesList(speciesFromBE);
+    };
+    getSpecies();
+  }, []);
 
-  const [speciesList, setSpeciesList] = useState(DUMMY_SPECIES);
+  const fetchSpecies = async () => {
+    const result = await fetch(
+      "http://localhost:8080/api.mas.backend/species/all"
+    );
+    return await result.json();
+  };
+
+  const addSpeciesToBE = async (species) => {
+    const result = await fetch(
+      "http://localhost:8080/api.mas.backend/species/add",
+      {
+        method: "POST",
+        headers: {
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify(species),
+      }
+    );
+
+    const data = await result.json();
+
+    setSpeciesList((previousState) => [
+      {
+        latinName: data.latinName,
+        lifeCycleL: data.lifeCycle,
+        id: data.id,
+        key: data.id,
+      },
+      ...previousState,
+    ]);
+  };
+
+  const [speciesList, setSpeciesList] = useState([]);
 
   const [openForm, setOpenForm] = useState(false);
 
   const clearSelectedCategoryHandler = () => {
     props.onClearCategory("Experienced Gardener");
-  };
-
-  const addNewSpeciesHandler = (newSpecies) => {
-      console.log(newSpecies)
-    setSpeciesList((previousState) => {
-      return [newSpecies, ...previousState];
-    });
-    closeFormHandler();
   };
 
   const showFormHandler = () => {
@@ -59,7 +73,7 @@ const SpeciesList = (props) => {
           <div className="species-list-head">
             <div className="species-list__title">
               <NewSpeciesForm
-                onAddNewSpecies={addNewSpeciesHandler}
+                onAddNewSpecies={addSpeciesToBE}
                 onHideForm={closeFormHandler}
               />
             </div>
