@@ -22,17 +22,17 @@ const NewSpeciesForm = (props) => {
   const submitHandler = (event) => {
     event.preventDefault();
 
-    let expenseData = {
-      latinname: userInput.latinName,
-      lifeCycle: userInput.lifeCycle
+    let newSpecies = {
+      latinName: userInput.enteredLatinName,
+      lifeCycle: userInput.enteredlifeCycle
     };
 
-    props.onAddNewSpecies(expenseData);
+    props.onAddNewSpecies(newSpecies);
     clearFormFields();
   };
 
   const hideFormHandler = (event) => {
-    event.preventDefault(); // prevet default page reload by browser
+    event.preventDefault(); 
     props.onHideForm(true);
     clearFormFields();
   };
@@ -51,22 +51,7 @@ const NewSpeciesForm = (props) => {
             value={userInput.enteredLatinName}
           />
         </div>
-        <div className="new-species-form__control">
-          <label>Life cycle</label>
-          <input
-            type="radio"
-            value={"annual species"}  // perennial species
-            onChange={lifeCycleChangeHandler}
-          />
-        </div>
-        <div className="new-species-form__control">
-          <label>Life cycle</label>
-          <input
-            type="radio"
-            value={"perennial species"}  // perennial species
-            onChange={lifeCycleChangeHandler}
-          />
-        </div>
+
       </div>
       <div className="new-species-form__actions">
       <button onClick={hideFormHandler} >Canclel</button>

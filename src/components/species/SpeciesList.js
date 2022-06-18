@@ -39,6 +39,7 @@ const SpeciesList = (props) => {
 
   const saveNewSpeciesHandler = (newSpecies) => {
     console.log(newSpecies);
+    closeFormHandler();
   };
 
   const buildHead = () => {
@@ -50,11 +51,13 @@ const SpeciesList = (props) => {
               <h2>Manage species</h2>
             </div>
           </div>
-          <div className="species-list__title">
-            <NewSpeciesForm
-              onAddNewSpecies={saveNewSpeciesHandler}
-              onHideForm={closeFormHandler}
-            />
+          <div className="species-list-head">
+            <div className="species-list__title">
+              <NewSpeciesForm
+                onAddNewSpecies={saveNewSpeciesHandler}
+                onHideForm={closeFormHandler}
+              />
+            </div>
           </div>
         </div>
       );
