@@ -52,15 +52,15 @@ const WorkerCategorySelector = (props) => {
   };
 
   const clearSelectedCategoryHandler = () => {
-    props.onClearCategory(selectedGardener);
+    props.onClearCategory();
   };
 
-  const addSpeciesHandler = () => {
-    props.onAddSpecies();
+  const manageSpeciesHandler = () => {
+    props.onManageSpecies();
   };
 
-  const addPlantHandler = () => {
-    props.onAddPlant();
+  const managePlantHandler = () => {
+    props.onManagePlant();
   };
 
   const buildHead = () => {
@@ -78,8 +78,8 @@ const WorkerCategorySelector = (props) => {
       return (
         <div className="experienced-gardeners-foot">
           <div className="experienced-gardeners-button">
-            <button onClick={addSpeciesHandler}>Add species</button>
-            <button onClick={addPlantHandler}>Add plant</button>
+            <button onClick={manageSpeciesHandler}>Manage species</button>
+            <button onClick={managePlantHandler}>Manage plants</button>
             <button onClick={clearSelectedCategoryHandler}>Back</button>
           </div>
         </div>

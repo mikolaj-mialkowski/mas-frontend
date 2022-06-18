@@ -3,6 +3,7 @@ import "./WorkerCategorySelector.css";
 import Card from "../UI/Card";
 import ExperiencedGardeners from "./ExperiencedGardeners";
 import React, { useState } from "react";
+import SpeciesList from "../species/SpeciesList";
 
 const WorkerCategorySelector = (props) => {
   const [selectedCategory, setSelectedCategory] = useState("main");
@@ -18,12 +19,10 @@ const WorkerCategorySelector = (props) => {
 
   const addSpeciesHandler = () => {
     setSelectedCategory("species");
-    console.log("go species");
   };
 
   const addPlantHandler = () => {
     setSelectedCategory("plant")
-    console.log("go plant");
 };
 
   const buildHead = () => {
@@ -39,8 +38,16 @@ const WorkerCategorySelector = (props) => {
   if (selectedCategory === "Experienced Gardener") {
     return (
       <ExperiencedGardeners
-        onClearCategory={clearSelectedCategoryHandler} onAddSpecies={addSpeciesHandler} onAddPlant={addPlantHandler}
+        onClearCategory={clearSelectedCategoryHandler} onManageSpecies={addSpeciesHandler} onManagePlant={addPlantHandler}
       ></ExperiencedGardeners>
+    );
+  }
+
+  if (selectedCategory === "species") {
+    return (
+      <SpeciesList
+        onClearCategory={clearSelectedCategoryHandler}
+      ></SpeciesList>
     );
   }
 
