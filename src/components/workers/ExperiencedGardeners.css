@@ -84,12 +84,4 @@
     background-color: #defad7;
   }
 
-  .expense-item__price {
-    font-size: 1rem;
-    font-weight: bold;
-    color: white;
-    background-color: #01802d85;
-    border: 1px solid white;
-    padding: 0.5rem;
-    border-radius: 12px;
-  }
+  

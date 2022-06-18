@@ -1,4 +1,4 @@
-import "./WorkerCategory.css";
+import "./ExperiencedGardener.css";
 import Card from "../UI/Card";
 import EmploymentDate from "./EmploymentDate";
 
@@ -9,15 +9,15 @@ const ExperiencedGardener = (props) => {
   };
 
   return (
-    <Card className="worker-category">
-      <div className="worker-category__box">
+    <Card className="experienced-gardener">
+      <div className="experienced-gardener__box">
         <EmploymentDate date={props.employmentDate} />
         <button onClick={selectWorkerHandler}>
           {props.firstName + "\t" + props.lastName}    
         </button>
-        <div className="expense-item__price"> {props.salary} PLN</div>
-        <div className="expense-item__price"> {props.salaryBonus} PLN</div>
+        <div className="experienced-gardener-contact-info"> {props.contactInfo}</div>
       </div>
+      <div className="experienced-gardener-salary"> {Number(props.salary) + Number(props.salaryBonus)} PLN</div>
     </Card>
   );
 };

@@ -12,6 +12,7 @@ const WorkerCategorySelector = (props) => {
       salary: "7000",
       salaryBonus: "2000",
       employmentDate: new Date(),
+      contactInfo: "+48 516-825-724"
     },
     {
       id: 11,
@@ -20,6 +21,7 @@ const WorkerCategorySelector = (props) => {
       salary: "6000",
       salaryBonus: "1500",
       employmentDate: new Date(),
+      contactInfo: "+48 625-264-112"
     },
     {
       id: 12,
@@ -28,6 +30,7 @@ const WorkerCategorySelector = (props) => {
       salary: "7000",
       salaryBonus: "500",
       employmentDate: new Date(),
+      contactInfo: "+48 452-421-940"
     },
     {
       id: 13,
@@ -36,6 +39,7 @@ const WorkerCategorySelector = (props) => {
       salary: "7300",
       salaryBonus: "200",
       employmentDate: new Date(),
+      contactInfo: "+48 394-432-843"
     },
   ];
 
@@ -65,6 +69,7 @@ const WorkerCategorySelector = (props) => {
               salary={experiencedGardener.salary}
               salaryBonus={experiencedGardener.salaryBonus}
               employmentDate={experiencedGardener.employmentDate}
+              contactInfo={experiencedGardener.contactInfo}
             />
           ))}
         </ul>
