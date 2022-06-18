@@ -1,0 +1,26 @@
+.employment {
+    display: flex;
+    flex-direction: column;
+    width: 5.5rem;
+    height: 5.5rem;
+    border: 1px solid #ececec;
+    background-color: #2a2a2a;
+    color: rgb(255, 255, 255);
+    border-radius: 12px;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .employment-month {
+    font-size: 0.75rem;
+    font-weight: bold;
+  }
+  
+  .employment-year {
+    font-size: 0.75rem;
+  }
+  
+  .employment-day {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }

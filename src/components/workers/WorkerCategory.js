@@ -12,9 +12,7 @@ const selectCategoryHandler = (event) => {
   return (
     <Card className="worker-category">
       <div className="worker-category__box">
-        <div className="new-expense__actions">
           <button onClick={selectCategoryHandler} >{props.name}</button>
-        </div>
       </div>
     </Card>
   );

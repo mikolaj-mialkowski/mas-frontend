@@ -15,14 +15,6 @@ const WorkerCategorySelector = (props) => {
     },
     {
       id: 11,
-      firstName: "Krzysztow",
-      lastName: "Krawczyk",
-      salary: "6500",
-      salaryBonus: "1000",
-      employmentDate: new Date(),
-    },
-    {
-      id: 12,
       firstName: "Aleksander",
       lastName: "Bziuk",
       salary: "6000",
@@ -30,7 +22,7 @@ const WorkerCategorySelector = (props) => {
       employmentDate: new Date(),
     },
     {
-      id: 13,
+      id: 12,
       firstName: "Jakub",
       lastName: "Zasztowt",
       salary: "7000",
@@ -38,7 +30,7 @@ const WorkerCategorySelector = (props) => {
       employmentDate: new Date(),
     },
     {
-      id: 14,
+      id: 13,
       firstName: "Michał",
       lastName: "Okręglicki",
       salary: "7300",
@@ -57,8 +49,7 @@ const WorkerCategorySelector = (props) => {
 
   return (
     <div>
-
-      <div className="experienced-gardeners-black__background">
+      <div className="experienced-gardeners-head">
         <div className="experienced-gardeners__title">
           <h2>Available experienced gardeners</h2>
         </div>
@@ -79,8 +70,10 @@ const WorkerCategorySelector = (props) => {
         </ul>
       </Card>
 
-      <div className="experienced-gardeners-cancel">
-        <button onClick={clearSelectedCategoryHandler}>Back</button>
+      <div className="experienced-gardeners-foot">
+        <div className="experienced-gardeners-button">
+          <button onClick={clearSelectedCategoryHandler}>Back</button>
+        </div>
       </div>
     </div>
   );

@@ -26,7 +26,7 @@
     flex: 1;
   }
 
-  .experienced-gardeners-cancel {
+  .experienced-gardeners-foot {
     background-color: rgba(0, 70, 21, 0.8);
     padding: 1rem;
     margin: 2rem auto;
@@ -34,10 +34,11 @@
     max-width: 95%;
     border-radius: 12px;
     text-align: center;
+    
     box-shadow: 0 20px 20px rgba(0, 0, 0, 0.3);
   }
 
-  .experienced-gardeners-black__background {
+  .experienced-gardeners-head {
     background-color: rgba(0, 70, 21, 0.8);
     padding: 1rem;
     margin: 2rem auto;
@@ -52,4 +53,43 @@
   .experienced-gardeners__title{
     color: white;
     text-align: center;
+  }
+
+  .experienced-gardeners-button button {
+    font: inherit;
+    cursor: pointer;
+    padding: 1rem 2rem;
+    border: 1px solid #ffffff;
+    background-color: rgba(31,31,31);
+    color: white;
+    border-radius: 12px;
+    margin-right: 1rem;
+  }
+  
+  .experienced-gardeners-button button:hover,
+  .experienced-gardeners-button button:active {
+    background-color: rgba(31,31,31,70);
+    border-color: #0a8836;
+    color: #0a8836;
+  }
+  
+  .experienced-gardeners-button button.alternative {
+    color: #012519;
+    border-color: transparent;
+    background-color: transparent;
+  }
+  
+  .experienced-gardeners-button button.alternative:hover,
+  .experienced-gardeners-button button.alternative:active {
+    background-color: #defad7;
+  }
+
+  .expense-item__price {
+    font-size: 1rem;
+    font-weight: bold;
+    color: white;
+    background-color: #01802d85;
+    border: 1px solid white;
+    padding: 0.5rem;
+    border-radius: 12px;
   }
