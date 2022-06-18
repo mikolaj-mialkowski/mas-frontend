@@ -1,12 +1,12 @@
 import Card from "../UI/Card";
-import "./Species"
+import "./Species.css"
 
 const Species = (props) => {
   return (
     <Card className="species">
       <div className="species__box">
-        <div className="species-salary">{props.latinName}</div>
-        <div>{props.lifeCycle}</div>
+        <div className="species-def">{props.latinName}</div>
+        <div className="species-salary">{props.lifeCycle === "ONE_YEAR" ? "annual species" : "perennial species"}</div>
       </div>
     </Card>
   );
