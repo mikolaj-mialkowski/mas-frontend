@@ -26,7 +26,7 @@ const WorkerCategorySelector = (props) => {
 
   return (
     <div>
-      <div className="worker-category-selector-title__background">
+      <div className="worker-category-selector-black__background">
         <div className="worker-category-selector__title">
           <h2>Available workers categories</h2>
         </div>

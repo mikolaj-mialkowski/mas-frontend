@@ -57,6 +57,13 @@ const WorkerCategorySelector = (props) => {
 
   return (
     <div>
+
+      <div className="experienced-gardeners-black__background">
+        <div className="experienced-gardeners__title">
+          <h2>Available experienced gardeners</h2>
+        </div>
+      </div>
+
       <Card className="experienced-gardeners__background">
         <ul className="experienced-gardeners">
           {DUMMY_EXPERIENCED_GARDENERS.map((experiencedGardener) => (
@@ -71,9 +78,10 @@ const WorkerCategorySelector = (props) => {
           ))}
         </ul>
       </Card>
-        <div className="experienced-gardeners-cancel">
-          <button onClick={clearSelectedCategoryHandler}>Back</button>
-        </div>
+
+      <div className="experienced-gardeners-cancel">
+        <button onClick={clearSelectedCategoryHandler}>Back</button>
+      </div>
     </div>
   );
 };
