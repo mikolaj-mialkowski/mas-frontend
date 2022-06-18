@@ -1,6 +1,5 @@
 import "./WorkerCategory.css";
 import Card from "../UI/Card";
-import React, { useState } from "react";
 
 const WorkerCategory = (props) => {
 

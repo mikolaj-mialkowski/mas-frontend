@@ -2,9 +2,9 @@ import Card from '../UI/Card.js';
 import "./EmploymentDate.css"
 
 const EmploymentDate = (props) => {
-    const day = props.date.toLocaleString("en-US", { day: "2-digit" });
-    const month = props.date.toLocaleString("en-US", { month: "long" });
-    const year = props.date.getFullYear();
+    const day =  new Date(props.date).toLocaleString("en-US", { day: "2-digit" });
+    const month = new Date(props.date).toLocaleString("en-US", { month: "long" });
+    const year = (new Date(props.date)).getFullYear();
   
     return (
       <Card className='employment'>

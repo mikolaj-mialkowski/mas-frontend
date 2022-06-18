@@ -1,6 +1,6 @@
 import Card from "../UI/Card";
 import ExperiencedGardener from "./ExperiencedGardener";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./ExperiencedGardeners.css";
 
 const WorkerCategorySelector = (props) => {
@@ -38,16 +38,32 @@ const WorkerCategorySelector = (props) => {
       lastName: "Okręglicki",
       salary: "7300",
       salaryBonus: "200",
-      employmentDate: new Date(),
+      employmentDate: new Date("2022-05-02"),
       contactInfo: "+48 394-432-843",
     },
   ];
 
+  const [gardenersList, setGardenersList] = useState([]);
   const [selectedGardener, setSelectedGardener] = useState(null);
+
+  useEffect(() => {
+    const getExperiencedGardeners = async () => {
+      const gardenersFromBE = await fetchGardeners();
+      setGardenersList(gardenersFromBE);
+    };
+    getExperiencedGardeners();
+  }, []);
+
+  const fetchGardeners = async () => {
+    const result = await fetch(
+      "http://localhost:8080/api.mas.backend/experiencedGardener/all"
+    );
+    return await result.json();
+  };
 
   const selectGardenerHandler = (id) => {
     setSelectedGardener(
-      DUMMY_EXPERIENCED_GARDENERS.find((gardener) => gardener.id === id)
+        gardenersList.find((gardener) => gardener.id === id)
     );
   };
 
@@ -100,7 +116,7 @@ const WorkerCategorySelector = (props) => {
       {buildHead()}
       <Card className="experienced-gardeners__background">
         <ul className="experienced-gardeners">
-          {DUMMY_EXPERIENCED_GARDENERS.map((experiencedGardener) => (
+          {gardenersList.map((experiencedGardener) => (
             <ExperiencedGardener
               onSelectedGardener={selectGardenerHandler}
               key={experiencedGardener.id}
