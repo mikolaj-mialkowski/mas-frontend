@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 const NewPlantForm = (props) => {
   const fetchSpecies = async () => {
     const result = await fetch(
-      "http://localhost:8080/api.mas.backend/species/all"
+      "https://api-mas-backend.herokuapp.com/api.mas.backend/species/all"
     );
     return await result.json();
   };
