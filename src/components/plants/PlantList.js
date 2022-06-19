@@ -19,14 +19,14 @@ const PlantList = (props) => {
 
   const fetchPlants = async () => {
     const result = await fetch(
-      configData.localhost_url+configData.all_plants
+      configData.heroku_url+configData.all_plants
     );
     return await result.json();
   };
 
   const addPlantToBE = async (plant) => {
     const result = await fetch(
-      configData.localhost_url+configData.add_plant
+      configData.heroku_url+configData.add_plant
       ,
       {
         method: "POST",
@@ -78,7 +78,7 @@ const PlantList = (props) => {
 
   const deletePlantHandler = async (id) => {
     const result = await fetch(
-      configData.localhost_url+configData.delete_plant + id,
+      configData.heroku_url+configData.delete_plant + id,
       {
         method: "DELETE",
       }

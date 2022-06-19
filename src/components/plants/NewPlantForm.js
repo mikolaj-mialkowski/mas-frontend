@@ -6,14 +6,14 @@ const NewPlantForm = (props) => {
 
   const fetchSpecies = async () => {
     const result = await fetch(
-      configData.localhost_url+configData.all_species
+      configData.heroku_url+configData.all_species
     );
     return await result.json();
   };
 
   const fetchGardeners = async () => {
     const result = await fetch(
-      configData.localhost_url+configData.all_novice_gardeners
+      configData.heroku_url+configData.all_novice_gardeners
     );
     return await result.json();
   };
