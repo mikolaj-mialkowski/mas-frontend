@@ -6,8 +6,8 @@
     border: 1px solid white;
     border-radius: 12px;
     font-size: 1.25rem;
-    margin-left: 12rem;
-    margin-right: 1;
+    margin-left: 2rem;
+    margin-right: 2;
 
     padding: 1.5rem 2rem;
   }
@@ -44,7 +44,7 @@
   
   .plant-def{
     font: inherit;
-    padding: 1.5rem 1.5rem;
+    padding: 1.25rem 1.25rem;
     border: 1px solid #ffffff;
     background-color: rgba(31,31,31);
     color: white;
@@ -59,7 +59,7 @@
     background-color: rgba(31,31,31);
     color: white;
     border-radius: 12px;
-    margin-right: 3rem;
+    margin-right: 1rem;
   }
 
   .plant button:hover,

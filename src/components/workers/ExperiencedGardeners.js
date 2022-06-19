@@ -19,7 +19,7 @@ const WorkerCategorySelector = (props) => {
 
   const fetchGardeners = async () => {
     const result = await fetch(
-      configData.heroku_url+configData.all_experienced_gardeners
+      configData.localhost_url+configData.all_experienced_gardeners
     );
     return await result.json();
   };

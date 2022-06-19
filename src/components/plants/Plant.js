@@ -3,30 +3,39 @@ import "./Plant.css";
 import React, { useState } from "react";
 
 const Plant = (props) => {
+  const [selectedText, setSelectedText] = useState(props.id);
 
-const[selectedText, setSelectedText] = useState(props.id);
+  const changeSelectedTextToDelHandler = () => {
+    setSelectedText("delete");
+  };
 
-const changeSelectedTextToDelHandler = () =>{
-  setSelectedText("delete");
-}
+  const changeSelectedTextToIdHandler = () => {
+    setSelectedText(props.id);
+  };
 
-const changeSelectedTextToIdHandler = () =>{
-  setSelectedText(props.id);
-}
-
-const deleteHandler = () =>{
-  props.onDeletePlant(props.id);
-}
+  const deleteHandler = () => {
+    props.onDeletePlant(props.id);
+  };
 
   return (
     <Card className="plant">
       <div className="plant__box">
-        <button onMouseEnter={changeSelectedTextToDelHandler} onMouseLeave={changeSelectedTextToIdHandler} onClick={deleteHandler} className="plant-def-del">{selectedText}</button>
+        <button
+          onMouseEnter={changeSelectedTextToDelHandler}
+          onMouseLeave={changeSelectedTextToIdHandler}
+          onClick={deleteHandler}
+          className="plant-def-del"
+        >
+          {selectedText}
+        </button>
         <div className="plant-def">
           {props.healthState === "HEALTHY_UNDEMANDING" ? "healthy" : "sick"}
         </div>
         <div className="plant-def">
           {props.fertilizer ? "fertilized" : "not fertilized"}
+        </div>
+        <div className="plant-special">
+          {props.gardener.firstName + " " + props.gardener.lastName}
         </div>
         <div className="plant-special">{props.species.latinName}</div>
       </div>

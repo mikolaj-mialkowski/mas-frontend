@@ -6,5 +6,6 @@
     "add_species": "/species/add",
     "all_plants": "/undemandingPlant/all",
     "add_plant": "/undemandingPlant/add",
-    "delete_plant": "/undemandingPlant/"
+    "delete_plant": "/undemandingPlant/",
+    "all_novice_gardeners": "/noviceGardener/all"
 }

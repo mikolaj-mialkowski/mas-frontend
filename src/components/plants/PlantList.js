@@ -19,14 +19,14 @@ const PlantList = (props) => {
 
   const fetchPlants = async () => {
     const result = await fetch(
-      configData.heroku_url+configData.all_plants
+      configData.localhost_url+configData.all_plants
     );
     return await result.json();
   };
 
   const addPlantToBE = async (plant) => {
     const result = await fetch(
-      configData.heroku_url+configData.add_plant
+      configData.localhost_url+configData.add_plant
       ,
       {
         method: "POST",
@@ -36,6 +36,7 @@ const PlantList = (props) => {
         body: JSON.stringify({
           fertilizer: plant.fertilizer,
           speciesEntity: { id: plant.speciesId },
+          noviceGardenerEntity: {id: plant.gardenerId}
         }),
       }
     );
@@ -53,6 +54,10 @@ const PlantList = (props) => {
           id: data.speciesEntity.id,
           lifeCycle: data.speciesEntity.lifeCycle,
         },
+        noviceGardenerEntity:{
+          firstName: data.noviceGardenerEntity.firstName,
+          lastName: data.noviceGardenerEntity.lastName,
+        }
       },
       ...previousState,
     ]);
@@ -73,13 +78,11 @@ const PlantList = (props) => {
 
   const deletePlantHandler = async (id) => {
     const result = await fetch(
-      configData.heroku_url+configData.delete_plant + id,
+      configData.localhost_url+configData.delete_plant + id,
       {
         method: "DELETE",
       }
     );
-      //result();
-
 
     setPlantList((previousState) =>
       previousState.filter((plant) => plant.id !== id)
@@ -147,6 +150,7 @@ const PlantList = (props) => {
               healthState={"HEALTHY_UNDEMANDING"}
               fertilizer={plant.fertilizer}
               species={plant.speciesEntity}
+              gardener={plant.noviceGardenerEntity}
             />
           ))}
         </ul>

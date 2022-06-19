@@ -20,14 +20,14 @@ const SpeciesList = (props) => {
 
   const fetchSpecies = async () => {
     const result = await fetch(
-      configData.heroku_url+configData.all_species
+      configData.localhost_url+configData.all_species
     );
     return await result.json();
   };
 
   const addSpeciesToBE = async (species) => {
     const result = await fetch(
-      configData.heroku_url+configData.add_species,
+      configData.localhost_url+configData.add_species,
       {
         method: "POST",
         headers: {
