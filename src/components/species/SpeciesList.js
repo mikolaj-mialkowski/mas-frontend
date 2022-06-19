@@ -19,14 +19,14 @@ const SpeciesList = (props) => {
 
   const fetchSpecies = async () => {
     const result = await fetch(
-      "http://localhost:8080/api.mas.backend/species/all"
+      "https://react-mas-frontend.herokuapp.com/api.mas.backend/species/all"
     );
     return await result.json();
   };
 
   const addSpeciesToBE = async (species) => {
     const result = await fetch(
-      "http://localhost:8080/api.mas.backend/species/add",
+      "https://react-mas-frontend.herokuapp.com/api.mas.backend/species/add",
       {
         method: "POST",
         headers: {
