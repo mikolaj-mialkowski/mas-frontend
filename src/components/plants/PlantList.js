@@ -54,6 +54,7 @@ const PlantList = (props) => {
       },
       ...previousState,
     ]);
+    closeFormHandler(true);
   };
 
   const clearSelectedCategoryHandler = () => {
@@ -66,6 +67,20 @@ const PlantList = (props) => {
 
   const closeFormHandler = () => {
     setOpenForm(false);
+  };
+
+  const deletePlantHandler = async (id) => {
+    const result = await fetch(
+      "http://localhost:8080/api.mas.backend/undemandingPlant/" + id,
+      {
+        method: "DELETE",
+      }
+    );
+
+    setPlantList((previousState) =>
+      previousState.filter((plant) => plant.id !== id)
+    );
+    closeFormHandler(true);
   };
 
   const buildHead = () => {
@@ -122,6 +137,7 @@ const PlantList = (props) => {
         <ul className="plant-list">
           {plantList.map((plant) => (
             <Plant
+              onDeletePlant={deletePlantHandler}
               key={plant.id}
               id={plant.id}
               healthState={"HEALTHY_UNDEMANDING"}

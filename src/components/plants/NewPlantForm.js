@@ -20,7 +20,7 @@ const NewPlantForm = (props) => {
   const [speciesList, setSpeciesList] = useState([]);
 
   const [userInput, setUserInput] = useState({
-    enteredFertilizer: "false",
+    enteredFertilizer: false,
     enteredId: "",
   });
 
