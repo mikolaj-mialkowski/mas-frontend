@@ -18,7 +18,7 @@ const WorkerCategorySelector = (props) => {
 
   const fetchGardeners = async () => {
     const result = await fetch(
-      "https://api-mas-backend.herokuapp.com/api.mas.backend/experiencedGardener/all"
+      "http://localhost:8080/api.mas.backend/experiencedGardener/all"
     );
     return await result.json();
   };
