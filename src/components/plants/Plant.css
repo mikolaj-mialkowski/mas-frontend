@@ -4,13 +4,12 @@
     color: white;
     background-color: #01802d85;
     border: 1px solid white;
-    padding: 0.5rem;
     border-radius: 12px;
     font-size: 1.25rem;
     margin-left: 12rem;
     margin-right: 1;
 
-    padding: 0.5rem 1.5rem;
+    padding: 1.5rem 2rem;
   }
 
   .plant-contact-info {
@@ -60,7 +59,7 @@
     background-color: rgba(31,31,31);
     color: white;
     border-radius: 12px;
-    margin-right: 1rem;
+    margin-right: 3rem;
   }
 
   .plant button:hover,
