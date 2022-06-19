@@ -18,14 +18,14 @@ const PlantList = (props) => {
 
   const fetchPlants = async () => {
     const result = await fetch(
-      "http://localhost:8080/api.mas.backend/undemandingPlant/all"
+      "https://api-mas-backend.herokuapp.com/api.mas.backend/undemandingPlant/all"
     );
     return await result.json();
   };
 
   const addPlantToBE = async (plant) => {
     const result = await fetch(
-      "http://localhost:8080/api.mas.backend/undemandingPlant/add",
+      "https://api-mas-backend.herokuapp.com/undemandingPlant/add",
       {
         method: "POST",
         headers: {
@@ -71,7 +71,7 @@ const PlantList = (props) => {
 
   const deletePlantHandler = async (id) => {
     const result = await fetch(
-      "http://localhost:8080/api.mas.backend/undemandingPlant/" + id,
+      "https://api-mas-backend.herokuapp.com/api.mas.backend/undemandingPlant/" + id,
       {
         method: "DELETE",
       }
