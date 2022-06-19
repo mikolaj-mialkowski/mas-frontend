@@ -1,21 +1,40 @@
 import "./NewPlantForm.css";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 const NewPlantForm = (props) => {
+
+  const fetchSpecies = async () => {
+    const result = await fetch(
+      "http://localhost:8080/api.mas.backend/species/all"
+    );
+    let res = await result.json();
+    return res;
+  };
+
+  useEffect(() => {
+    const getSpecies = async () => {
+      const speciesFromBE = await fetchSpecies();
+      setSpeciesList(speciesFromBE);
+    };
+    getSpecies();
+  }, []);
+
+  const [speciesList, setSpeciesList] = useState([]);
+
   const [userInput, setUserInput] = useState({
     enteredFertilizer: "",
-    enteredspeciesName: ""
+    enteredSpeciesName: "",
   });
 
-  const fertilizerChangeHandler = (event) => {
-    setUserInput((prevState) => {
-      return { ...prevState, enteredFertilizer: event.target.value };
+  const speciesChangeHandler = (event) => {
+    setUserInput(() => {
+      return { enteredspeciesName: event.target.value };
     });
   };
 
-  const lifeCycleChangeHandler = (event) => {
-    setUserInput((previousState) => {
-      return { ...previousState, enteredlifeCycle: event.target.value };
+  const fertilizerChangeHandler = (event) => {
+    setUserInput(() => {
+      return { enteredFertilizer: event.target.value };
     });
   };
 
@@ -56,38 +75,41 @@ const NewPlantForm = (props) => {
 
   return (
     <form onSubmit={submitHandler}>
-      <div className="new-species-form__controls">
-        <div className="new-species-form__control">
-          <label>Latin name</label>
-          <input
-            type="text"
-            onChange={fertilizerChangeHandler}
-            value={userInput.enteredFertilizer}
-          />
+      <div className="new-plant-form-filter__controls">
+        <div className="new-plant-form-filter">
+            <label>Filter by species</label>
+            <select onChange={speciesChangeHandler}>
+              {speciesList.map((species) => (
+                <option key={species.latinName} value={species.latinName}>
+                  {species.latinName}
+                </option>
+              ))}
+            </select>
         </div>
-        <div className="species-form-radio">
+        </div>
+        <div className="new-plant-form__radio">
           <label>
             <input
               type="radio"
               value="annual species"
-              onChange={lifeCycleChangeHandler}
+              onChange={fertilizerChangeHandler}
               checked={userInput.enteredlifeCycle === "annual species"}
             />
-            Annual species
+             requires fertilizer
           </label>
         </div>
-        <div className="species-form-radio">
+        <div className="new-plant-form__radio">
           <label>
             <input
               type="radio"
               value="perennial species"
-              onChange={lifeCycleChangeHandler}
+              onChange={fertilizerChangeHandler}
               checked={userInput.enteredlifeCycle === "perennial species"}
             />
-            Perennial species
+             doesn't require fertilizer
           </label>
         </div>
-      </div>
+      
       <div className="new-species-form__actions">
         <div className="species-form-button">
           <button onClick={hideFormHandler}>Canclel</button>

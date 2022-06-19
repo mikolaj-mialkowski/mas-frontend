@@ -5,6 +5,10 @@ import "./SpeciesList.css";
 import NewSpeciesForm from "./NewSpeciesForm";
 
 const SpeciesList = (props) => {
+    
+  const [speciesList, setSpeciesList] = useState([]);
+  const [openForm, setOpenForm] = useState(false);
+
   useEffect(() => {
     const getSpecies = async () => {
       const speciesFromBE = await fetchSpecies();
@@ -44,10 +48,6 @@ const SpeciesList = (props) => {
       ...previousState,
     ]);
   };
-
-  const [speciesList, setSpeciesList] = useState([]);
-
-  const [openForm, setOpenForm] = useState(false);
 
   const clearSelectedCategoryHandler = () => {
     props.onClearCategory("Experienced Gardener");

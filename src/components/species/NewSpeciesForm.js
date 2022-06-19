@@ -30,6 +30,7 @@ const NewSpeciesForm = (props) => {
     if (isValidSpecies(newSpecies)) {
       props.onAddNewSpecies(newSpecies);
       clearFormFields();
+      props.onHideForm(true);
     }
   };
 
@@ -49,7 +50,6 @@ const NewSpeciesForm = (props) => {
 
   return (
     <form onSubmit={submitHandler}>
-      <div className="new-species-form__controls">
         <div className="new-species-form__control">
           <label>Latin name</label>
           <input
@@ -80,7 +80,6 @@ const NewSpeciesForm = (props) => {
             Perennial species
           </label>
         </div>
-      </div>
       <div className="new-species-form__actions">
         <div className="species-form-button">
           <button onClick={hideFormHandler}>Canclel</button>

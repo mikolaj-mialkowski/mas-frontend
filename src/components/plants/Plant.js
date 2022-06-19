@@ -3,8 +3,6 @@ import "./Plant.css"
 
 const Plant = (props) => {
 
-console.log(props)
-
   return (
     <Card className="plant">
       <div className="plant__box">
