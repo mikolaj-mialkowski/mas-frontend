@@ -22,42 +22,45 @@ const NewPlantForm = (props) => {
   const [speciesList, setSpeciesList] = useState([]);
 
   const [userInput, setUserInput] = useState({
-    enteredFertilizer: "",
-    enteredSpeciesName: "",
+    enteredFertilizer: "false",
+    enteredId: "",
   });
 
   const speciesChangeHandler = (event) => {
-    setUserInput(() => {
-      return { enteredspeciesName: event.target.value };
+    setUserInput((previousState) => {
+      return {...previousState, enteredId: event.target.value };
     });
+    console.log("changed to: "+ event.target.value)
   };
 
   const fertilizerChangeHandler = (event) => {
-    setUserInput(() => {
-      return { enteredFertilizer: event.target.value };
+    setUserInput((previousState) => {
+      return {...previousState, enteredFertilizer: event.target.value };
     });
+
   };
 
   const submitHandler = (event) => {
     event.preventDefault();
 
-    let newSpecies = {
-      latinName: userInput.enteredLatinName,
-      lifeCycle: userInput.enteredlifeCycle,
-      id: Math.random().toString(),
+    let newPlant = {
+      speciesId: userInput.enteredId,
+      fertilizer: userInput.enteredFertilizer,
+      healthState: "HEALTHY_UNDEMANDING"
     };
 
-    if (isValidSpecies(newSpecies)) {
-      props.onAddNewSpecies(newSpecies);
+    if (isValidSpecies(newPlant)) {
+      console.log(newPlant)
+      props.onAddNewPlant(newPlant);
       clearFormFields();
     }
   };
 
-  const isValidSpecies = (species) => {
+  const isValidSpecies = (newPlant) => {
     if (
-      species.latinName === "" ||
-      species.lifeCycle === "" ||
-      species.id === ""
+      newPlant.id === "" ||
+      newPlant.key === "" ||
+      newPlant.fertilizer === ""
     )
       return false;
 
@@ -71,7 +74,7 @@ const NewPlantForm = (props) => {
   };
 
   const clearFormFields = () =>
-    setUserInput({ enteredLatinName: "", enteredlifeCycle: "" });
+    setUserInput({ enteredId: "", enteredFertilizer: "" });
 
   return (
     <form onSubmit={submitHandler}>
@@ -80,8 +83,8 @@ const NewPlantForm = (props) => {
             <label>Filter by species</label>
             <select onChange={speciesChangeHandler}>
               {speciesList.map((species) => (
-                <option key={species.latinName} value={species.latinName}>
-                  {species.latinName}
+                <option key={species.latinName} value={species.id}>
+                  {species.latinName + " " + species.id}
                 </option>
               ))}
             </select>
@@ -91,9 +94,9 @@ const NewPlantForm = (props) => {
           <label>
             <input
               type="radio"
-              value="annual species"
+              value="true"
               onChange={fertilizerChangeHandler}
-              checked={userInput.enteredlifeCycle === "annual species"}
+              checked={userInput.enteredFertilizer === "true"}
             />
              requires fertilizer
           </label>
@@ -102,9 +105,9 @@ const NewPlantForm = (props) => {
           <label>
             <input
               type="radio"
-              value="perennial species"
+              value="false"
               onChange={fertilizerChangeHandler}
-              checked={userInput.enteredlifeCycle === "perennial species"}
+              checked={userInput.enteredFertilizer === "false"}
             />
              doesn't require fertilizer
           </label>

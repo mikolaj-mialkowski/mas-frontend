@@ -24,6 +24,8 @@ const PlantList = (props) => {
   };
 
   const addPlantToBE = async (plant) => {
+    console.log(plant);
+
     const result = await fetch(
       "http://localhost:8080/api.mas.backend/undemandingPlant/add",
       {
@@ -31,7 +33,10 @@ const PlantList = (props) => {
         headers: {
           "Content-type": "application/json",
         },
-        body: JSON.stringify(plant),
+        body: JSON.stringify({
+          fertilizer: plant.fertilizer,
+          speciesEntity: { id: plant.speciesId },
+        }),
       }
     );
 
@@ -41,9 +46,9 @@ const PlantList = (props) => {
       {
         id: data.id,
         key: data.id,
-        healthState: data.healthState,
+        healthState: "HEALTHY_UNDEMANDING",
         fertilizer: data.fertilizer,
-        species: data.species,
+        species: data.speciesEntity,
       },
       ...previousState,
     ]);
@@ -51,13 +56,6 @@ const PlantList = (props) => {
 
   const clearSelectedCategoryHandler = () => {
     props.onClearCategory("Experienced Gardener");
-  };
-
-  const addNewplantHandler = (newplant) => {
-    setPlantList((previousState) => {
-      return [newplant, ...previousState];
-    });
-    closeFormHandler();
   };
 
   const showFormHandler = () => {
@@ -80,7 +78,7 @@ const PlantList = (props) => {
           <div className="plant-list-head">
             <div className="plant-list__title">
               <NewPlantForm
-                onAddNewplant={addNewplantHandler}
+                onAddNewPlant={addPlantToBE}
                 onHideForm={closeFormHandler}
               />
             </div>
