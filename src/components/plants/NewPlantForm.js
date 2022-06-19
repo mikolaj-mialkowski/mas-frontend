@@ -5,7 +5,7 @@ import configData from "../../config/config.json"
 const NewPlantForm = (props) => {
   const fetchSpecies = async () => {
     const result = await fetch(
-      configData.localhost_url+configData.all_species
+      configData.heroku_url+configData.all_species
     );
     return await result.json();
   };
