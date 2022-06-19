@@ -24,8 +24,6 @@ const PlantList = (props) => {
   };
 
   const addPlantToBE = async (plant) => {
-    console.log(plant);
-
     const result = await fetch(
       "http://localhost:8080/api.mas.backend/undemandingPlant/add",
       {
@@ -48,7 +46,11 @@ const PlantList = (props) => {
         key: data.id,
         healthState: "HEALTHY_UNDEMANDING",
         fertilizer: data.fertilizer,
-        species: data.speciesEntity,
+        speciesEntity: {
+          latinName: data.speciesEntity.latinName,
+          id: data.speciesEntity.id,
+          lifeCycle: data.speciesEntity.lifeCycle,
+        },
       },
       ...previousState,
     ]);

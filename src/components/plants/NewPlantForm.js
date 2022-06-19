@@ -2,13 +2,11 @@ import "./NewPlantForm.css";
 import React, { useState, useEffect } from "react";
 
 const NewPlantForm = (props) => {
-
   const fetchSpecies = async () => {
     const result = await fetch(
       "http://localhost:8080/api.mas.backend/species/all"
     );
-    let res = await result.json();
-    return res;
+    return await result.json();
   };
 
   useEffect(() => {
@@ -28,16 +26,14 @@ const NewPlantForm = (props) => {
 
   const speciesChangeHandler = (event) => {
     setUserInput((previousState) => {
-      return {...previousState, enteredId: event.target.value };
+      return { ...previousState, enteredId: event.target.value };
     });
-    console.log("changed to: "+ event.target.value)
   };
 
   const fertilizerChangeHandler = (event) => {
     setUserInput((previousState) => {
-      return {...previousState, enteredFertilizer: event.target.value };
+      return { ...previousState, enteredFertilizer: event.target.value };
     });
-
   };
 
   const submitHandler = (event) => {
@@ -46,11 +42,10 @@ const NewPlantForm = (props) => {
     let newPlant = {
       speciesId: userInput.enteredId,
       fertilizer: userInput.enteredFertilizer,
-      healthState: "HEALTHY_UNDEMANDING"
+      healthState: "HEALTHY_UNDEMANDING",
     };
 
     if (isValidSpecies(newPlant)) {
-      console.log(newPlant)
       props.onAddNewPlant(newPlant);
       clearFormFields();
     }
@@ -58,12 +53,11 @@ const NewPlantForm = (props) => {
 
   const isValidSpecies = (newPlant) => {
     if (
-      newPlant.id === "" ||
+      newPlant.speciesId === "" ||
       newPlant.key === "" ||
-      newPlant.fertilizer === ""
+      newPlant.fertilizer === "" 
     )
       return false;
-
     return true;
   };
 
@@ -80,39 +74,39 @@ const NewPlantForm = (props) => {
     <form onSubmit={submitHandler}>
       <div className="new-plant-form-filter__controls">
         <div className="new-plant-form-filter">
-            <label>Filter by species</label>
-            <select onChange={speciesChangeHandler}>
-              {speciesList.map((species) => (
-                <option key={species.latinName} value={species.id}>
-                  {species.latinName + " " + species.id}
-                </option>
-              ))}
-            </select>
+          <label>Filter by species</label>
+          <select onChange={speciesChangeHandler}>
+            {speciesList.map((species) => (
+              <option key={species.latinName} value={species.id}>
+                {species.latinName}
+              </option>
+            ))}
+          </select>
         </div>
-        </div>
-        <div className="new-plant-form__radio">
-          <label>
-            <input
-              type="radio"
-              value="true"
-              onChange={fertilizerChangeHandler}
-              checked={userInput.enteredFertilizer === "true"}
-            />
-             requires fertilizer
-          </label>
-        </div>
-        <div className="new-plant-form__radio">
-          <label>
-            <input
-              type="radio"
-              value="false"
-              onChange={fertilizerChangeHandler}
-              checked={userInput.enteredFertilizer === "false"}
-            />
-             doesn't require fertilizer
-          </label>
-        </div>
-      
+      </div>
+      <div className="new-plant-form__radio">
+        <label>
+          <input
+            type="radio"
+            value="true"
+            onChange={fertilizerChangeHandler}
+            checked={userInput.enteredFertilizer === "true"}
+          />
+          requires fertilizer
+        </label>
+      </div>
+      <div className="new-plant-form__radio">
+        <label>
+          <input
+            type="radio"
+            value="false"
+            onChange={fertilizerChangeHandler}
+            checked={userInput.enteredFertilizer === "false"}
+          />
+          doesn't require fertilizer
+        </label>
+      </div>
+
       <div className="new-species-form__actions">
         <div className="species-form-button">
           <button onClick={hideFormHandler}>Canclel</button>
