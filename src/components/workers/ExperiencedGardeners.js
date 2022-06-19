@@ -4,44 +4,6 @@ import React, { useState, useEffect } from "react";
 import "./ExperiencedGardeners.css";
 
 const WorkerCategorySelector = (props) => {
-  const DUMMY_EXPERIENCED_GARDENERS = [
-    {
-      id: 10,
-      firstName: "Adam",
-      lastName: "Małysz",
-      salary: "7000",
-      salaryBonus: "2000",
-      employmentDate: new Date(),
-      contactInfo: "+48 516-825-724",
-    },
-    {
-      id: 11,
-      firstName: "Aleksander",
-      lastName: "Bziuk",
-      salary: "6000",
-      salaryBonus: "1500",
-      employmentDate: new Date(),
-      contactInfo: "+48 625-264-112",
-    },
-    {
-      id: 12,
-      firstName: "Jakub",
-      lastName: "Zasztowt",
-      salary: "7000",
-      salaryBonus: "500",
-      employmentDate: new Date(),
-      contactInfo: "+48 452-421-940",
-    },
-    {
-      id: 13,
-      firstName: "Michał",
-      lastName: "Okręglicki",
-      salary: "7300",
-      salaryBonus: "200",
-      employmentDate: new Date("2022-05-02"),
-      contactInfo: "+48 394-432-843",
-    },
-  ];
 
   const [gardenersList, setGardenersList] = useState([]);
   const [selectedGardener, setSelectedGardener] = useState(null);

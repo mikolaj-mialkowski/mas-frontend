@@ -1,40 +1,60 @@
 import Card from "../UI/Card";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Plant from "./Plant";
 import "./PlantList.css";
 import NewPlantForm from "./NewPlantForm";
 
 const PlantList = (props) => {
-
-  const DUMMY_plant = [
-    {
-      id: 100,
-      latinName: "Cactus pospolitus",
-      lifeCycle: "ONE_YEAR",
-    },
-    {
-      id: 101,
-      latinName: "Jarzebina polska",
-      lifeCycle: "ONE_YEAR",
-    },
-    {
-      id: 102,
-      latinName: "Random latin name",
-      lifeCycle: "MULTI_YEARS",
-    },
-  ];
-
-  const [plantList, setplantList] = useState(DUMMY_plant);
-
+  const [plantList, setPlantList] = useState([]);
   const [openForm, setOpenForm] = useState(false);
+
+  useEffect(() => {
+    const getPlants = async () => {
+      const plantsFromBE = await fetchPlants();
+      setPlantList(plantsFromBE);
+    };
+    getPlants();
+  }, []);
+
+  const fetchPlants = async () => {
+    const result = await fetch(
+      "http://localhost:8080/api.mas.backend/undemandingPlant/all"
+    );
+    return await result.json();
+  };
+
+  const addPlantToBE = async (plant) => {
+    const result = await fetch(
+      "http://localhost:8080/api.mas.backend/undemandingPlant/add",
+      {
+        method: "POST",
+        headers: {
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify(plant),
+      }
+    );
+
+    const data = await result.json();
+
+    setPlantList((previousState) => [
+      {
+        id: data.id,
+        key: data.id,
+        healthState: data.healthState,
+        fertilizer: data.fertilizer,
+        species: data.species,
+      },
+      ...previousState,
+    ]);
+  };
 
   const clearSelectedCategoryHandler = () => {
     props.onClearCategory("Experienced Gardener");
   };
 
   const addNewplantHandler = (newplant) => {
-      console.log(newplant)
-    setplantList((previousState) => {
+    setPlantList((previousState) => {
       return [newplant, ...previousState];
     });
     closeFormHandler();
@@ -78,7 +98,7 @@ const PlantList = (props) => {
         </div>
         <div className="plant-list-head">
           <div className="plant-list-button">
-            <button onClick={showFormHandler}>Add new plant</button>
+            <button onClick={showFormHandler}>Add new undemanding plant</button>
           </div>
         </div>
       </div>
@@ -104,8 +124,9 @@ const PlantList = (props) => {
             <Plant
               key={plant.id}
               id={plant.id}
-              latinName={plant.latinName}
-              lifeCycle={plant.lifeCycle}
+              healthState={"HEALTHY_UNDEMANDING"}
+              fertilizer={plant.fertilizer}
+              species={plant.speciesEntity}
             />
           ))}
         </ul>
