@@ -5,16 +5,29 @@ const App = () => {
   const DUMMY_WORKERS_CATEGORY = [
     {
       id: 1,
-      name: "Novice Gardener",
+      name: "Owner",
+      active: false
     },
     {
       id: 2,
-      name: "Experienced Gardener",
+      name: "Customer",
+      active: false
     },
     {
       id: 3,
+      name: "Novice Gardener",
+      active: false
+    },
+    {
+      id: 4,
+      name: "Experienced Gardener",
+      active: true
+    },
+    {
+      id: 5,
       name: "Administration Worker",
-    }
+      active: false
+    },
   ];
 
   return (
