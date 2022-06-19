@@ -2,6 +2,7 @@ import Card from "../UI/Card";
 import ExperiencedGardener from "./ExperiencedGardener";
 import React, { useState, useEffect } from "react";
 import "./ExperiencedGardeners.css";
+import configData from "../../config/config.json"
 
 const WorkerCategorySelector = (props) => {
 
@@ -18,7 +19,7 @@ const WorkerCategorySelector = (props) => {
 
   const fetchGardeners = async () => {
     const result = await fetch(
-      "https://react-mas-frontend.herokuapp.com/api.mas.backend/experiencedGardener/all"
+      configData.localhost_url+configData.all_experienced_gardeners
     );
     return await result.json();
   };

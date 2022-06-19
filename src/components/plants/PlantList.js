@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import Plant from "./Plant";
 import "./PlantList.css";
 import NewPlantForm from "./NewPlantForm";
+import configData from "../../config/config.json"
 
 const PlantList = (props) => {
   const [plantList, setPlantList] = useState([]);
@@ -18,14 +19,15 @@ const PlantList = (props) => {
 
   const fetchPlants = async () => {
     const result = await fetch(
-      "https://react-mas-frontend.herokuapp.com/api.mas.backend/undemandingPlant/all"
+      configData.localhost_url+configData.all_plants
     );
     return await result.json();
   };
 
   const addPlantToBE = async (plant) => {
     const result = await fetch(
-      "https://react-mas-frontend.herokuapp.com/api.mas.backend/undemandingPlant/add",
+      configData.localhost_url+configData.add_plant
+      ,
       {
         method: "POST",
         headers: {
@@ -71,11 +73,13 @@ const PlantList = (props) => {
 
   const deletePlantHandler = async (id) => {
     const result = await fetch(
-      "https://react-mas-frontend.herokuapp.com/api.mas.backend/undemandingPlant/" + id,
+      configData.localhost_url+configData.delete_plant + id,
       {
         method: "DELETE",
       }
     );
+      //result();
+
 
     setPlantList((previousState) =>
       previousState.filter((plant) => plant.id !== id)

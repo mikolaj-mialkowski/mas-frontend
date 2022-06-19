@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import Species from "./Species";
 import "./SpeciesList.css";
 import NewSpeciesForm from "./NewSpeciesForm";
+import configData from "../../config/config.json"
 
 const SpeciesList = (props) => {
     
@@ -19,14 +20,14 @@ const SpeciesList = (props) => {
 
   const fetchSpecies = async () => {
     const result = await fetch(
-      "https://react-mas-frontend.herokuapp.com/api.mas.backend/species/all"
+      configData.localhost_url+configData.all_species
     );
     return await result.json();
   };
 
   const addSpeciesToBE = async (species) => {
     const result = await fetch(
-      "https://react-mas-frontend.herokuapp.com/api.mas.backend/species/add",
+      configData.localhost_url+configData.add_species,
       {
         method: "POST",
         headers: {

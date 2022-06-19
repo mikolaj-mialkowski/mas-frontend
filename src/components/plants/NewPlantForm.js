@@ -1,10 +1,11 @@
 import "./NewPlantForm.css";
 import React, { useState, useEffect } from "react";
+import configData from "../../config/config.json"
 
 const NewPlantForm = (props) => {
   const fetchSpecies = async () => {
     const result = await fetch(
-      "https://react-mas-frontend.herokuapp.com/api.mas.backend/species/all"
+      configData.localhost_url+configData.all_species
     );
     return await result.json();
   };
