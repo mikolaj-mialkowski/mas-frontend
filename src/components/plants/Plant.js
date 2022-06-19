@@ -28,7 +28,7 @@ const deleteHandler = () =>{
         <div className="plant-def">
           {props.fertilizer ? "fertilized" : "not fertilized"}
         </div>
-        <div className="plant-salary">{props.species.latinName}</div>
+        <div className="plant-special">{props.species.latinName}</div>
       </div>
     </Card>
   );
